@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/Admin/Documents/GitHub/monogame2alex/alvin-supermarion-riktiga/Content/bakgrundsbild.jpg</File>
+    <File>C:/Users/Admin/Documents/GitHub/monogame2alex/alvin-supermarion-riktiga/Content/Brick.png</File>
+    <File>C:/Users/Admin/Documents/GitHub/monogame2alex/alvin-supermarion-riktiga/Content/grass.jpg</File>
+    <File>C:/Users/Admin/Documents/GitHub/monogame2alex/alvin-supermarion-riktiga/Content/jumppp22.ogg</File>
+    <File>C:/Users/Admin/Documents/GitHub/monogame2alex/alvin-supermarion-riktiga/Content/supermario.png</File>
+    <File>C:/Users/Admin/Documents/GitHub/monogame2alex/alvin-supermarion-riktiga/Content/Героическая минорная (1).mp3</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>
