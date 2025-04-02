@@ -90,3 +90,4 @@ C:\Users\Admin\Documents\GitHub\monogame2alex\alvin-supermarion-riktiga\obj\Debu
 C:\Users\Admin\Documents\GitHub\monogame2alex\alvin-supermarion-riktiga\bin\Debug\net6.0-windows\Content\jumppp22.xnb
 C:\Users\Admin\Documents\GitHub\monogame2alex\alvin-supermarion-riktiga\bin\Debug\net6.0-windows\Content\Героическая минорная (1).wma
 C:\Users\Admin\Documents\GitHub\monogame2alex\alvin-supermarion-riktiga\bin\Debug\net6.0-windows\Content\Героическая минорная (1).xnb
+C:\Users\Admin\Documents\GitHub\monogame2alex\alvin-supermarion-riktiga\obj\Debug\net6.0-windows\TEst-med-Alvin.sourcelink.json

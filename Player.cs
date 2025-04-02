@@ -59,8 +59,13 @@ namespace TEst_med_Alvin
             spriteBatch.Draw(texture, hitbox, Color.White);
         }
         public void BrickCollision(Rectangle brickHitbox){
-            velocity.Y = 0;
-            position.Y = brickHitbox.Y + brickHitbox.Height;           
+            float lastYPos = position.Y - velocity.Y;
+            position.Y = brickHitbox.Y + brickHitbox.Height;
+            if(lastYPos + hitbox.Height < brickHitbox.Y){
+                velocity.Y = 0;
+                position.Y = brickHitbox.Y - hitbox.Height-2; 
+                canJump=true;
+            }
         }
     }
 }
