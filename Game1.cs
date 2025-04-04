@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
 using SharpDX.Direct3D9;
+using alvin_supermarion_riktiga;
 
 namespace TEst_med_Alvin;
 
@@ -22,6 +23,8 @@ public class Game1 : Game
     private List<Brick> boxar = new List<Brick>();
     Song theme;
     SoundEffect effect;
+    private Camera camera;
+
     
     public Game1()
     {
@@ -33,7 +36,7 @@ public class Game1 : Game
     protected override void Initialize()
     {
         // TODO: Add your initialization logic here
-
+        camera=new Camera(GraphicsDevice.Viewport);
         base.Initialize();
     }
 
@@ -44,9 +47,10 @@ public class Game1 : Game
         Supermario = Content.Load<Texture2D>("supermario");
         Grass = Content.Load<Texture2D>("grass");
         player = new Player (Supermario,new Vector2(380, 350),50, effect);
-        platform = new Platform (Grass,new Vector2(0, 350),new Vector2(830,130));
+        platform = new Platform (Grass,new Vector2(-100, 350),new Vector2(1000,400));
         brick = Content.Load<Texture2D>("Brick");
-        bakgrundsbild = Content.Load<Texture2D>("bakgrundsbild");
+        bakgrundsbild = Content.Load<Texture2D>("himmel");
+
         AddBricks();
         theme = Content.Load<Song>("Героическая минорная (1)");
         MediaPlayer.Play(theme);
@@ -60,16 +64,19 @@ public class Game1 : Game
 
         player.Update();
         playerbrickcollision();
+        camera.UpdateCamera(GraphicsDevice.Viewport,player.Hitbox.Location.ToVector2());
 
         base.Update(gameTime);
     }
 
     protected override void Draw(GameTime gameTime)
     {
-        Rectangle bgRect = new(0,0,800,600);
+        Rectangle bgRect = new(-100,-250,1000,600);
+        Rectangle bgRect2 = new(900,-250,1000,600);
         GraphicsDevice.Clear(Color.CornflowerBlue);
-        _spriteBatch.Begin();
+        _spriteBatch.Begin(SpriteSortMode.Deferred,null,null,null,null,null,camera.Transform);
         _spriteBatch.Draw(bakgrundsbild, bgRect, Color.White);
+        _spriteBatch.Draw(bakgrundsbild, bgRect2, Color.White);
         player.Draw(_spriteBatch);
         platform.Draw(_spriteBatch);
         foreach(Brick b in boxar){
@@ -80,10 +87,11 @@ public class Game1 : Game
         
     }
 
+
     private void AddBricks(){
-            boxar.Add(new Brick (brick,new Vector2(250, 150),new Vector2(100,80)));        
-            boxar.Add(new Brick (brick,new Vector2(500, 200),new Vector2(100,80)));   
-            boxar.Add(new Brick (brick,new Vector2(40, 60),new Vector2(100,80)));    
+            boxar.Add(new Brick (brick,new Vector2(250, 150),new Vector2(50,50)));        
+            boxar.Add(new Brick (brick,new Vector2(500, 200),new Vector2(50,50)));   
+            boxar.Add(new Brick (brick,new Vector2(40, 60),new Vector2(50,50)));    
     }
 
     private void playerbrickcollision(){

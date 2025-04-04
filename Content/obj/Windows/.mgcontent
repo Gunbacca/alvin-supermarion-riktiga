@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/Admin/Documents/GitHub/monogame2alex/alvin-supermarion-riktiga/Content/../../../../../Downloads/Brick.png</File>
+    <File>C:/Users/Admin/Documents/GitHub/monogame2alex/alvin-supermarion-riktiga/Content/bakgrundsbild.jpg</File>
+    <File>C:/Users/Admin/Documents/GitHub/monogame2alex/alvin-supermarion-riktiga/Content/grass.jpg</File>
+    <File>C:/Users/Admin/Documents/GitHub/monogame2alex/alvin-supermarion-riktiga/Content/himmel.jpg</File>
+    <File>C:/Users/Admin/Documents/GitHub/monogame2alex/alvin-supermarion-riktiga/Content/jumppp22.ogg</File>
+    <File>C:/Users/Admin/Documents/GitHub/monogame2alex/alvin-supermarion-riktiga/Content/supermario.png</File>
+    <File>C:/Users/Admin/Documents/GitHub/monogame2alex/alvin-supermarion-riktiga/Content/Героическая минорная (1).mp3</File>
+  </SourceFiles>
+  <DestFiles>
+    <File>Brick.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>
