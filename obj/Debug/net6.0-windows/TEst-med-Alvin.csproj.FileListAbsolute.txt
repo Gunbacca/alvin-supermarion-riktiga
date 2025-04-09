@@ -92,3 +92,4 @@ C:\Users\Admin\Documents\GitHub\monogame2alex\alvin-supermarion-riktiga\bin\Debu
 C:\Users\Admin\Documents\GitHub\monogame2alex\alvin-supermarion-riktiga\bin\Debug\net6.0-windows\Content\Героическая минорная (1).xnb
 C:\Users\Admin\Documents\GitHub\monogame2alex\alvin-supermarion-riktiga\obj\Debug\net6.0-windows\TEst-med-Alvin.sourcelink.json
 C:\Users\Admin\Documents\GitHub\monogame2alex\alvin-supermarion-riktiga\bin\Debug\net6.0-windows\Content\himmel.xnb
+C:\Users\Admin\Documents\GitHub\monogame2alex\alvin-supermarion-riktiga\bin\Debug\net6.0-windows\Content\wheelchair2-7379603_1280.xnb

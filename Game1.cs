@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
 using SharpDX.Direct3D9;
 using alvin_supermarion_riktiga;
+using spaceshhoter;
 
 namespace TEst_med_Alvin;
 
@@ -20,6 +21,8 @@ public class Game1 : Game
     private Texture2D bakgrundsbild;
     private Brick box;
     private Texture2D brick;
+     private Texture2D mario;
+    private List<enemy> enemies = new List<enemy>();
     private List<Brick> boxar = new List<Brick>();
     Song theme;
     SoundEffect effect;
@@ -45,6 +48,7 @@ public class Game1 : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
         effect = Content.Load<SoundEffect>("jumppp22");
         Supermario = Content.Load<Texture2D>("supermario");
+        mario= Content.Load<Texture2D>("wheelchair2-7379603_1280");
         Grass = Content.Load<Texture2D>("grass");
         player = new Player (Supermario,new Vector2(380, 350),50, effect);
         platform = new Platform (Grass,new Vector2(-100, 350),new Vector2(1000,400));
@@ -54,6 +58,8 @@ public class Game1 : Game
         AddBricks();
         theme = Content.Load<Song>("Героическая минорная (1)");
         MediaPlayer.Play(theme);
+
+         enemies.Add(new enemy(mario));
     }
     
 
@@ -67,18 +73,29 @@ public class Game1 : Game
         camera.UpdateCamera(GraphicsDevice.Viewport,player.Hitbox.Location.ToVector2());
 
         base.Update(gameTime);
+
+         player.Update();
+        foreach(enemy enemy in enemies){
+            enemy.update();
+        }
     }
 
     protected override void Draw(GameTime gameTime)
     {
-        Rectangle bgRect = new(-100,-250,1000,600);
-        Rectangle bgRect2 = new(900,-250,1000,600);
+        Rectangle bgRect = new(-100,-170,1000,600);
+        Rectangle bgRect2 = new(900,-170,1000,600);
+        Rectangle bgRect3 = new(1900,-170,1000,600);
+         Rectangle bgRect4 = new(2900,-170,1000,600);
         GraphicsDevice.Clear(Color.CornflowerBlue);
         _spriteBatch.Begin(SpriteSortMode.Deferred,null,null,null,null,null,camera.Transform);
         _spriteBatch.Draw(bakgrundsbild, bgRect, Color.White);
         _spriteBatch.Draw(bakgrundsbild, bgRect2, Color.White);
+        _spriteBatch.Draw(bakgrundsbild, bgRect3, Color.White);
+        _spriteBatch.Draw(bakgrundsbild, bgRect4, Color.White);
         player.Draw(_spriteBatch);
         platform.Draw(_spriteBatch);
+        foreach(enemy enemy in enemies)
+          enemy.Draw(_spriteBatch);
         foreach(Brick b in boxar){
             b.Draw(_spriteBatch);
         }
