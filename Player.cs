@@ -67,5 +67,28 @@ namespace TEst_med_Alvin
                 canJump=true;
             }
         }
+        public void greenpipeCollision(Rectangle greenpipeHitbox){
+            float lastYPos = position.Y - velocity.Y;
+            position.Y = greenpipeHitbox.Y + greenpipeHitbox.Height;
+            if(lastYPos + hitbox.Height < greenpipeHitbox.Y){
+                velocity.Y = 0;
+                position.Y = greenpipeHitbox.Y - hitbox.Height-2; 
+                canJump=true;
+            }
+        }
+
+        public void Collision(Rectangle greenpipeHitbox){
+            Vector2 prevPos = position;
+            prevPos.X -=3;
+            hitbox.Location = prevPos.ToPoint();
+            if(!hitbox.Intersects(greenpipeHitbox))
+            {
+                position.X= prevPos.X;
+            }
+            else{
+                position.Y -= velocity.Y;
+            }
+            hitbox.Location = position.ToPoint();
+        }
     }
 }

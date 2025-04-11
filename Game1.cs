@@ -19,11 +19,14 @@ public class Game1 : Game
     private Texture2D Grass;
     private Platform platform;
     private Texture2D bakgrundsbild;
-    private Brick box;
     private Texture2D brick;
      private Texture2D mario;
     private List<enemy> enemies = new List<enemy>();
     private List<Brick> boxar = new List<Brick>();
+   
+    private Texture2D greenpipe;
+    private List<greenpipe> pipes = new List<greenpipe>();
+
     Song theme;
     SoundEffect effect;
     private Camera camera;
@@ -53,9 +56,12 @@ public class Game1 : Game
         player = new Player (Supermario,new Vector2(380, 350),50, effect);
         platform = new Platform (Grass,new Vector2(-100, 350),new Vector2(1000,400));
         brick = Content.Load<Texture2D>("Brick");
+        greenpipe = Content.Load<Texture2D>("greenpipe");
         bakgrundsbild = Content.Load<Texture2D>("himmel");
+       
 
         AddBricks();
+        Addpipes();
         theme = Content.Load<Song>("Героическая минорная (1)");
         MediaPlayer.Play(theme);
 
@@ -70,11 +76,11 @@ public class Game1 : Game
 
         player.Update();
         playerbrickcollision();
+        playergreenpipecollision();
         camera.UpdateCamera(GraphicsDevice.Viewport,player.Hitbox.Location.ToVector2());
 
         base.Update(gameTime);
 
-         player.Update();
         foreach(enemy enemy in enemies){
             enemy.update();
         }
@@ -98,6 +104,9 @@ public class Game1 : Game
           enemy.Draw(_spriteBatch);
         foreach(Brick b in boxar){
             b.Draw(_spriteBatch);
+            foreach(greenpipe g in pipes){
+            g.Draw(_spriteBatch);
+            }
         }
         _spriteBatch.End();
         base.Draw(gameTime);
@@ -110,12 +119,27 @@ public class Game1 : Game
             boxar.Add(new Brick (brick,new Vector2(500, 200),new Vector2(50,50)));   
             boxar.Add(new Brick (brick,new Vector2(40, 60),new Vector2(50,50)));    
     }
+     private void Addpipes(){
+            pipes.Add(new greenpipe (greenpipe,new Vector2(800, 275),new Vector2(75,75)));        
+            pipes.Add(new greenpipe (greenpipe,new Vector2(1300, 276),new Vector2(75,75)));   
+            pipes.Add(new greenpipe (greenpipe,new Vector2(2000, 276),new Vector2(75,75)));    
+    }
 
     private void playerbrickcollision(){
         foreach(Brick b in boxar){
             if(b.Hitbox.Intersects(player.Hitbox)){
-                player.BrickCollision(b.Hitbox);
+                player.Collision(b.Hitbox);
             }
         }
+        
     } 
+    
+    private void playergreenpipecollision(){
+        foreach(greenpipe g in pipes){
+            if(g.Hitbox.Intersects(player.Hitbox)){
+                player.Collision(g.Hitbox);
+            }
+        }
+        
+    }
 }

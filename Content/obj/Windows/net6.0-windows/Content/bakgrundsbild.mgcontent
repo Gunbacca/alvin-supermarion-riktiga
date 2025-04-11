@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>C:/Users/Admin/Documents/GitHub/monogame2alex/alvin-supermarion-riktiga/Content/bakgrundsbild.jpg</SourceFile>
-  <SourceTime>2025-04-09T08:51:32.51084+02:00</SourceTime>
+  <SourceTime>2025-04-11T09:53:48.4824773+02:00</SourceTime>
   <DestFile>C:/Users/Admin/Documents/GitHub/monogame2alex/alvin-supermarion-riktiga/Content/bin/Windows/Content/bakgrundsbild.xnb</DestFile>
-  <DestTime>2025-04-09T08:52:24.6463836+02:00</DestTime>
+  <DestTime>2025-04-11T09:54:45.1001919+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
