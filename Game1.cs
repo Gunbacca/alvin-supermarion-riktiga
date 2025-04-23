@@ -26,6 +26,8 @@ public class Game1 : Game
    
     private Texture2D greenpipe;
     private List<greenpipe> pipes = new List<greenpipe>();
+    private float timer = 0;
+    private bool invincible = false;
 
     Song theme;
     SoundEffect effect;
@@ -79,6 +81,7 @@ public class Game1 : Game
         playergreenpipecollision();
         camera.UpdateCamera(GraphicsDevice.Viewport,player.Hitbox.Location.ToVector2());
 
+        playerdie();
         base.Update(gameTime);
 
         foreach(enemy enemy in enemies){
@@ -141,5 +144,21 @@ public class Game1 : Game
             }
         }
         
+    }
+
+    private void playerdie(){      
+        if(invincible)
+            return;
+        for(int i =0; i< enemies.Count;i++){
+            if(enemies[i].Hitbox.Intersects(player.Hitbox)){
+                liv--;
+                invincible= true;
+                if(liv <= 0){
+                    Exit();
+                }
+                i--;
+
+            }
+        }
     }
 }

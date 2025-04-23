@@ -32,12 +32,13 @@ namespace TEst_med_Alvin
         }
         public void Update(){
             KeyboardState Kstate = Keyboard.GetState();
+            velocity.X = 0;
 
             if(Kstate.IsKeyDown(Keys.A)){
-                position.X -= 3;
+                velocity.X -= 3;
             }
             else if(Kstate.IsKeyDown(Keys.D)){
-                position.X += 3;
+                velocity.X += 3;
             }
             if(Kstate.IsKeyDown(Keys.Space)){
                 if(canJump){
@@ -50,7 +51,8 @@ namespace TEst_med_Alvin
                 position.Y = 300;
                 canJump = true;
             }
-            position.Y += velocity.Y;
+            position += velocity;
+            
             velocity.Y += GRAVITY * 1f/60f; 
             hitbox.Location = position.ToPoint();
 
@@ -79,7 +81,7 @@ namespace TEst_med_Alvin
 
         public void Collision(Rectangle greenpipeHitbox){
             Vector2 prevPos = position;
-            prevPos.X -=3;
+            prevPos.X -= velocity.X;
             hitbox.Location = prevPos.ToPoint();
             if(!hitbox.Intersects(greenpipeHitbox))
             {
@@ -87,6 +89,9 @@ namespace TEst_med_Alvin
             }
             else{
                 position.Y -= velocity.Y;
+                if(velocity.Y >0)
+                    canJump =true;
+                velocity.Y = 0; 
             }
             hitbox.Location = position.ToPoint();
         }
