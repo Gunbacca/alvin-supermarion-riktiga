@@ -57,8 +57,11 @@ namespace TEst_med_Alvin
             hitbox.Location = position.ToPoint();
 
         }
-        public void Draw(SpriteBatch spriteBatch){
-            spriteBatch.Draw(texture, hitbox, Color.White);
+        public void Draw(SpriteBatch spriteBatch, bool invincible){
+            if(!invincible)
+                spriteBatch.Draw(texture, hitbox, Color.White);
+            else
+                spriteBatch.Draw(texture, hitbox, Color.Black);
         }
         public void BrickCollision(Rectangle brickHitbox){
             float lastYPos = position.Y - velocity.Y;

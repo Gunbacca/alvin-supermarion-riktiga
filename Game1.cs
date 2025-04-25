@@ -28,6 +28,8 @@ public class Game1 : Game
     private List<greenpipe> pipes = new List<greenpipe>();
     private float timer = 0;
     private bool invincible = false;
+    private int liv = 3;
+    private float _Timeleft;
 
     Song theme;
     SoundEffect effect;
@@ -82,11 +84,27 @@ public class Game1 : Game
         camera.UpdateCamera(GraphicsDevice.Viewport,player.Hitbox.Location.ToVector2());
 
         playerdie();
-        base.Update(gameTime);
 
         foreach(enemy enemy in enemies){
             enemy.update();
         }
+
+        if (invincible)
+        {
+            _Timeleft -= 1f / 60f;
+
+            if (_Timeleft <= 0)
+            {
+                invincible = false;
+            }
+            
+        }
+        
+
+
+
+
+        base.Update(gameTime);
     }
 
     protected override void Draw(GameTime gameTime)
@@ -101,7 +119,7 @@ public class Game1 : Game
         _spriteBatch.Draw(bakgrundsbild, bgRect2, Color.White);
         _spriteBatch.Draw(bakgrundsbild, bgRect3, Color.White);
         _spriteBatch.Draw(bakgrundsbild, bgRect4, Color.White);
-        player.Draw(_spriteBatch);
+        player.Draw(_spriteBatch, invincible);
         platform.Draw(_spriteBatch);
         foreach(enemy enemy in enemies)
           enemy.Draw(_spriteBatch);
@@ -117,10 +135,18 @@ public class Game1 : Game
     }
 
 
-    private void AddBricks(){
-            boxar.Add(new Brick (brick,new Vector2(250, 150),new Vector2(50,50)));        
-            boxar.Add(new Brick (brick,new Vector2(500, 200),new Vector2(50,50)));   
-            boxar.Add(new Brick (brick,new Vector2(40, 60),new Vector2(50,50)));    
+    private void AddBricks()
+    {
+        boxar.Add(new Brick(brick, new Vector2(250, 150), new Vector2(50, 50)));
+        boxar.Add(new Brick(brick, new Vector2(500, 200), new Vector2(50, 50)));
+        boxar.Add(new Brick(brick, new Vector2(40, 60), new Vector2(50, 50)));
+        boxar.Add(new Brick(brick, new Vector2(900, 60), new Vector2(50, 50)));
+        boxar.Add(new Brick(brick, new Vector2(950, 60), new Vector2(50, 50)));
+        boxar.Add(new Brick(brick, new Vector2(1000, 60), new Vector2(50, 50)));
+        boxar.Add(new Brick(brick, new Vector2(1050, 60), new Vector2(50, 50)));
+        boxar.Add(new Brick(brick, new Vector2(-100, -220), new Vector2(50, 50)));
+        boxar.Add(new Brick(brick, new Vector2(-50, -220), new Vector2(50, 50)));   
+        boxar.Add(new Brick (brick,new Vector2(0, -220),new Vector2(50,50)));   
     }
      private void Addpipes(){
             pipes.Add(new greenpipe (greenpipe,new Vector2(800, 275),new Vector2(75,75)));        
@@ -153,10 +179,12 @@ public class Game1 : Game
             if(enemies[i].Hitbox.Intersects(player.Hitbox)){
                 liv--;
                 invincible= true;
-                if(liv <= 0){
+                _Timeleft = 3;
+                if (liv <= 0)
+                {
                     Exit();
                 }
-                i--;
+                break;
 
             }
         }
