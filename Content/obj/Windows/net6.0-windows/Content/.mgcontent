@@ -7,6 +7,7 @@
     <File>C:/Users/Admin/Documents/GitHub/monogame2alex/alvin-supermarion-riktiga/Content/../../../../../Downloads/Brick.png</File>
     <File>C:/Users/Admin/Documents/GitHub/monogame2alex/alvin-supermarion-riktiga/Content/../../../../../Downloads/grass.jpg</File>
     <File>C:/Users/Admin/Documents/GitHub/monogame2alex/alvin-supermarion-riktiga/Content/bakgrundsbild.jpg</File>
+    <File>C:/Users/Admin/Documents/GitHub/monogame2alex/alvin-supermarion-riktiga/Content/heart pixel art 254x254.png</File>
     <File>C:/Users/Admin/Documents/GitHub/monogame2alex/alvin-supermarion-riktiga/Content/himmel.jpg</File>
     <File>C:/Users/Admin/Documents/GitHub/monogame2alex/alvin-supermarion-riktiga/Content/jumppp22.ogg</File>
     <File>C:/Users/Admin/Documents/GitHub/monogame2alex/alvin-supermarion-riktiga/Content/Mario_pipe.png</File>
@@ -17,6 +18,7 @@
   <DestFiles>
     <File>Brick.png</File>
     <File>grass.jpg</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

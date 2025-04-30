@@ -30,6 +30,7 @@ public class Game1 : Game
     private bool invincible = false;
     private int liv = 3;
     private float _Timeleft;
+    private Texture2D heart;
 
     Song theme;
     SoundEffect effect;
@@ -62,6 +63,7 @@ public class Game1 : Game
         brick = Content.Load<Texture2D>("Brick");
         greenpipe = Content.Load<Texture2D>("greenpipe");
         bakgrundsbild = Content.Load<Texture2D>("himmel");
+        heart = Content.Load<Texture2D>("heart pixel art 254x254");
        
 
         AddBricks();
@@ -109,25 +111,49 @@ public class Game1 : Game
 
     protected override void Draw(GameTime gameTime)
     {
-        Rectangle bgRect = new(-100,-170,1000,600);
-        Rectangle bgRect2 = new(900,-170,1000,600);
-        Rectangle bgRect3 = new(1900,-170,1000,600);
-         Rectangle bgRect4 = new(2900,-170,1000,600);
+        Rectangle bgRect = new(-100, -170, 1000, 600);
+        Rectangle bgRect2 = new(900, -170, 1000, 600);
+        Rectangle bgRect3 = new(1900, -170, 1000, 600);
+        Rectangle bgRect4 = new(2900, -170, 1000, 600);
         GraphicsDevice.Clear(Color.CornflowerBlue);
-        _spriteBatch.Begin(SpriteSortMode.Deferred,null,null,null,null,null,camera.Transform);
+        _spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.Transform);
         _spriteBatch.Draw(bakgrundsbild, bgRect, Color.White);
         _spriteBatch.Draw(bakgrundsbild, bgRect2, Color.White);
         _spriteBatch.Draw(bakgrundsbild, bgRect3, Color.White);
         _spriteBatch.Draw(bakgrundsbild, bgRect4, Color.White);
         player.Draw(_spriteBatch, invincible);
         platform.Draw(_spriteBatch);
-        foreach(enemy enemy in enemies)
-          enemy.Draw(_spriteBatch);
-        foreach(Brick b in boxar){
+        foreach (enemy enemy in enemies)
+            enemy.Draw(_spriteBatch);
+        foreach (Brick b in boxar)
+        {
             b.Draw(_spriteBatch);
-            foreach(greenpipe g in pipes){
-            g.Draw(_spriteBatch);
+            foreach (greenpipe g in pipes)
+            {
+                g.Draw(_spriteBatch);
             }
+        }
+
+
+        _spriteBatch.End();
+
+        _spriteBatch.Begin();
+        if (liv == 3)
+        {
+            _spriteBatch.Draw(heart, new Rectangle(64, 0, 30, 30), Color.White);
+            _spriteBatch.Draw(heart, new Rectangle(32, 0, 30, 30), Color.White);
+            _spriteBatch.Draw(heart, new Rectangle(0, 0, 30, 30), Color.White);
+        }
+        base.Draw(gameTime);
+        if (liv == 2)
+        {
+            _spriteBatch.Draw(heart, new Rectangle(32, 0, 30, 30), Color.White);
+            _spriteBatch.Draw(heart, new Rectangle(0, 0, 30, 30), Color.White);
+        }
+        base.Draw(gameTime);
+        if (liv == 1)
+        {
+            _spriteBatch.Draw(heart, new Rectangle(0,0, 30, 30), Color.White);
         }
         _spriteBatch.End();
         base.Draw(gameTime);
