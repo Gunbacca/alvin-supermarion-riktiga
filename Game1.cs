@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Audio;
 using SharpDX.Direct3D9;
 using alvin_supermarion_riktiga;
 using spaceshhoter;
+using System;
 
 namespace TEst_med_Alvin;
 
@@ -31,6 +32,7 @@ public class Game1 : Game
     private int liv = 3;
     private float _Timeleft;
     private Texture2D heart;
+    private Texture2D fiende;
 
     Song theme;
     SoundEffect effect;
@@ -86,8 +88,10 @@ public class Game1 : Game
         camera.UpdateCamera(GraphicsDevice.Viewport,player.Hitbox.Location.ToVector2());
 
         playerdie();
+        spawnenemy();
 
-        foreach(enemy enemy in enemies){
+        foreach (enemy enemy in enemies)
+        {
             enemy.update();
         }
 
@@ -99,7 +103,7 @@ public class Game1 : Game
             {
                 invincible = false;
             }
-            
+                        
         }
         
 
@@ -144,13 +148,11 @@ public class Game1 : Game
             _spriteBatch.Draw(heart, new Rectangle(32, 0, 30, 30), Color.White);
             _spriteBatch.Draw(heart, new Rectangle(0, 0, 30, 30), Color.White);
         }
-        base.Draw(gameTime);
         if (liv == 2)
         {
             _spriteBatch.Draw(heart, new Rectangle(32, 0, 30, 30), Color.White);
             _spriteBatch.Draw(heart, new Rectangle(0, 0, 30, 30), Color.White);
         }
-        base.Draw(gameTime);
         if (liv == 1)
         {
             _spriteBatch.Draw(heart, new Rectangle(0,0, 30, 30), Color.White);
@@ -166,10 +168,10 @@ public class Game1 : Game
         boxar.Add(new Brick(brick, new Vector2(250, 150), new Vector2(50, 50)));
         boxar.Add(new Brick(brick, new Vector2(500, 200), new Vector2(50, 50)));
         boxar.Add(new Brick(brick, new Vector2(40, 60), new Vector2(50, 50)));
-        boxar.Add(new Brick(brick, new Vector2(900, 60), new Vector2(50, 50)));
-        boxar.Add(new Brick(brick, new Vector2(950, 60), new Vector2(50, 50)));
-        boxar.Add(new Brick(brick, new Vector2(1000, 60), new Vector2(50, 50)));
-        boxar.Add(new Brick(brick, new Vector2(1050, 60), new Vector2(50, 50)));
+        boxar.Add(new Brick(brick, new Vector2(900, 100), new Vector2(50, 50)));
+        boxar.Add(new Brick(brick, new Vector2(950, 100), new Vector2(50, 50)));
+        boxar.Add(new Brick(brick, new Vector2(1000, 100), new Vector2(50, 50)));
+        boxar.Add(new Brick(brick, new Vector2(1050,100), new Vector2(50, 50)));
         boxar.Add(new Brick(brick, new Vector2(-100, -220), new Vector2(50, 50)));
         boxar.Add(new Brick(brick, new Vector2(-50, -220), new Vector2(50, 50)));   
         boxar.Add(new Brick (brick,new Vector2(0, -220),new Vector2(50,50)));   
@@ -179,14 +181,24 @@ public class Game1 : Game
             pipes.Add(new greenpipe (greenpipe,new Vector2(1300, 276),new Vector2(75,75)));   
             pipes.Add(new greenpipe (greenpipe,new Vector2(2000, 276),new Vector2(75,75)));    
     }
-
-    private void playerbrickcollision(){
-        foreach(Brick b in boxar){
-            if(b.Hitbox.Intersects(player.Hitbox)){
+    private void spawnenemy()
+    {
+        Random rand = new Random();
+        int value = rand.Next(1, 1000);
+        int spawnChancePercent = 5;
+        if (value <= spawnChancePercent)
+            enemies.Add(new enemy(mario));
+    }
+    private void playerbrickcollision()
+    {
+        foreach (Brick b in boxar)
+        {
+            if (b.Hitbox.Intersects(player.Hitbox))
+            {
                 player.Collision(b.Hitbox);
             }
         }
-        
+
     } 
     
     private void playergreenpipecollision(){

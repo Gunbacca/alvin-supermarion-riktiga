@@ -22,7 +22,7 @@ namespace spaceshhoter
             Random rand = new Random(); 
             int size = 80;
             speed = rand.NextFloat(20,100);
-            position.X = rand.NextFloat(500,1200);
+            position.X = rand.NextFloat(500,4000);
             position.Y = 290;
             hitbox = new Microsoft.Xna.Framework.Rectangle((int)position.X,(int)position.Y,size,size);
         }

@@ -82,19 +82,25 @@ namespace TEst_med_Alvin
             }
         }
 
-        public void Collision(Rectangle greenpipeHitbox){
+        public void Collision(Rectangle brickhitbox){
             Vector2 prevPos = position;
             prevPos.X -= velocity.X;
             hitbox.Location = prevPos.ToPoint();
-            if(!hitbox.Intersects(greenpipeHitbox))
+            if (!hitbox.Intersects(brickhitbox))
             {
-                position.X= prevPos.X;
+                position.X = prevPos.X;
             }
             else{
                 position.Y -= velocity.Y;
-                if(velocity.Y >0)
-                    canJump =true;
-                velocity.Y = 0; 
+                if (velocity.Y > 0)
+                {
+                    canJump = true;
+                    position.Y = brickhitbox.Top - hitbox.Height;
+                }
+                else
+                    position.Y = brickhitbox.Bottom;
+                velocity.Y = 0;
+
             }
             hitbox.Location = position.ToPoint();
         }
