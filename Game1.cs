@@ -167,25 +167,29 @@ public class Game1 : Game
     {
         boxar.Add(new Brick(brick, new Vector2(250, 150), new Vector2(50, 50)));
         boxar.Add(new Brick(brick, new Vector2(500, 200), new Vector2(50, 50)));
-        boxar.Add(new Brick(brick, new Vector2(40, 60), new Vector2(50, 50)));
-        boxar.Add(new Brick(brick, new Vector2(900, 100), new Vector2(50, 50)));
-        boxar.Add(new Brick(brick, new Vector2(950, 100), new Vector2(50, 50)));
-        boxar.Add(new Brick(brick, new Vector2(1000, 100), new Vector2(50, 50)));
-        boxar.Add(new Brick(brick, new Vector2(1050,100), new Vector2(50, 50)));
-        boxar.Add(new Brick(brick, new Vector2(-100, -220), new Vector2(50, 50)));
-        boxar.Add(new Brick(brick, new Vector2(-50, -220), new Vector2(50, 50)));   
-        boxar.Add(new Brick (brick,new Vector2(0, -220),new Vector2(50,50)));   
+        boxar.Add(new Brick(brick, new Vector2(40, 60), new Vector2(50, 50))); /* början*/
+        boxar.Add(new Brick(brick, new Vector2(900, 107), new Vector2(50, 50)));
+        boxar.Add(new Brick(brick, new Vector2(1200, 110), new Vector2(50, 50)));/*andra sectionen*/
+        boxar.Add(new Brick(brick, new Vector2(1960, 200), new Vector2(50, 50)));
+        boxar.Add(new Brick(brick, new Vector2(1960, 50), new Vector2(50, 50)));
+        boxar.Add(new Brick(brick, new Vector2(1960, -100), new Vector2(50, 50)));/*tredje section*/
+        boxar.Add(new Brick(brick, new Vector2(2065, 200), new Vector2(50, 50)));
+        boxar.Add(new Brick(brick, new Vector2(2065, 50), new Vector2(50, 50)));
+        boxar.Add(new Brick(brick, new Vector2(2065, -100), new Vector2(50, 50)));
     }
-     private void Addpipes(){
-            pipes.Add(new greenpipe (greenpipe,new Vector2(800, 275),new Vector2(75,75)));        
-            pipes.Add(new greenpipe (greenpipe,new Vector2(1300, 276),new Vector2(75,75)));   
-            pipes.Add(new greenpipe (greenpipe,new Vector2(2000, 276),new Vector2(75,75)));    
+    private void Addpipes()
+    {
+        pipes.Add(new greenpipe(greenpipe, new Vector2(800, 276), new Vector2(75, 75)));
+        pipes.Add(new greenpipe(greenpipe, new Vector2(1300, 76), new Vector2(75, 275)));
+        pipes.Add(new greenpipe(greenpipe, new Vector2(2000, -120), new Vector2(75, 475)));
+        pipes.Add(new greenpipe(greenpipe, new Vector2(2450, 76), new Vector2(75, 275)));
+        pipes.Add(new greenpipe (greenpipe,new Vector2(2450, -300),new Vector2(75,275)));         
     }
     private void spawnenemy()
     {
         Random rand = new Random();
         int value = rand.Next(1, 1000);
-        int spawnChancePercent = 5;
+        int spawnChancePercent = 6;
         if (value <= spawnChancePercent)
             enemies.Add(new enemy(mario));
     }
