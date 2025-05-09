@@ -15,8 +15,15 @@ namespace TEst_med_Alvin
         public Rectangle Hitbox{
             get{return hitbox;}
         }
+         public Vector2 Velocity
+        {
+            get { return velocity; }
+            set { velocity = value; }
+        }
         const float GRAVITY = 18.4f;
         Vector2 velocity;
+
+
         private bool canJump = true;
 
         public Player(Texture2D texture, Vector2 position, int pixelsize, SoundEffect jumpsound){
