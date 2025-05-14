@@ -120,6 +120,9 @@ public class Game1 : Game
         Rectangle bgRect3 = new(1900, -170, 1000, 600);
         Rectangle bgRect4 = new(2900, -170, 1000, 600);
         Rectangle bgRect5 = new(-100, -750, 1000, 600);
+        Rectangle bgRect6 = new(900, -750, 1000, 600);
+        Rectangle bgRect7 = new(1900, -750, 1000, 600);
+        Rectangle bgRect8 = new(2900, -750, 1000, 600);
         GraphicsDevice.Clear(Color.CornflowerBlue);
         _spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.Transform);
         _spriteBatch.Draw(bakgrundsbild, bgRect, Color.White);
@@ -127,6 +130,9 @@ public class Game1 : Game
         _spriteBatch.Draw(bakgrundsbild, bgRect3, Color.White);
         _spriteBatch.Draw(bakgrundsbild, bgRect4, Color.White);
         _spriteBatch.Draw(bakgrundsbild2, bgRect5, Color.White);
+        _spriteBatch.Draw(bakgrundsbild2, bgRect6, Color.White);
+        _spriteBatch.Draw(bakgrundsbild2, bgRect7, Color.White);
+        _spriteBatch.Draw(bakgrundsbild2, bgRect8, Color.White);
         player.Draw(_spriteBatch, invincible);
         platform.Draw(_spriteBatch);
         foreach (enemy enemy in enemies)
