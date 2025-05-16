@@ -184,6 +184,7 @@ public class Game1 : Game
         boxar.Add(new Brick(brick, new Vector2(2065, 200), new Vector2(50, 50)));
         boxar.Add(new Brick(brick, new Vector2(2065, 50), new Vector2(50, 50)));
         boxar.Add(new Brick(brick, new Vector2(2065, -100), new Vector2(50, 50)));
+        boxar.Add(new Brick(brick, new Vector2(2665, -80), new Vector2(50, 50)));/*fjärde section*/
     }
     private void Addpipes()
     {
@@ -191,7 +192,8 @@ public class Game1 : Game
         pipes.Add(new greenpipe(greenpipe, new Vector2(1300, 76), new Vector2(75, 275)));
         pipes.Add(new greenpipe(greenpipe, new Vector2(2000, -120), new Vector2(75, 475)));
         pipes.Add(new greenpipe(greenpipe, new Vector2(2450, 76), new Vector2(75, 275)));
-        pipes.Add(new greenpipe(greenpipe, new Vector2(2450, -300), new Vector2(75, 275)));
+        pipes.Add(new greenpipe(greenpipe, new Vector2(2450, -500), new Vector2(75, 475)));
+        pipes.Add(new greenpipe(greenpipe, new Vector2(2550, 0), new Vector2(75, 175)));
     }
     private void spawnenemy()
     {
