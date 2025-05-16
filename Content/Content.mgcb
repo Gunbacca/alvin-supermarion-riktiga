@@ -115,6 +115,12 @@
 /processorParam:TextureFormat=Color
 /build:supermario.png
 
+#begin videoplayback.m4a
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:videoplayback.m4a
+
 #begin wheelchair2-7379603_1280.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -126,10 +132,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:wheelchair2-7379603_1280.png
-
-#begin Героическая минорная (1).mp3
-/importer:Mp3Importer
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Героическая минорная (1).mp3
 
