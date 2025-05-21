@@ -98,3 +98,5 @@ C:\Users\Admin\Documents\GitHub\monogame2alex\alvin-supermarion-riktiga\bin\Debu
 C:\Users\Admin\Documents\GitHub\monogame2alex\alvin-supermarion-riktiga\bin\Debug\net6.0-windows\Content\himmel2.xnb
 c:\Users\Admin\Documents\GitHub\monogame2alex\alvin-supermarion-riktiga\bin\Debug\net6.0-windows\Content\videoplayback.wma
 c:\Users\Admin\Documents\GitHub\monogame2alex\alvin-supermarion-riktiga\bin\Debug\net6.0-windows\Content\videoplayback.xnb
+C:\Users\Admin\Documents\GitHub\monogame2alex\alvin-supermarion-riktiga\bin\Debug\net6.0-windows\Content\png-clipart-supermario-flag-super-mario-bros-2-luigi-pole-angle-flag.xnb
+C:\Users\Admin\Documents\GitHub\monogame2alex\alvin-supermarion-riktiga\bin\Debug\net6.0-windows\Content\himmel3.xnb

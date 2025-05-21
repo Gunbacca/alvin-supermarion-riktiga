@@ -21,6 +21,8 @@ public class Game1 : Game
     private Platform platform;
     private Texture2D bakgrundsbild;
     private Texture2D bakgrundsbild2;
+    private Texture2D himmelpng;
+    private Texture2D flagga;
     private Texture2D brick;
     private Texture2D mario;
     private List<enemy> enemies = new List<enemy>();
@@ -68,6 +70,8 @@ public class Game1 : Game
         bakgrundsbild = Content.Load<Texture2D>("himmel");
         heart = Content.Load<Texture2D>("heart pixel art 254x254");
         bakgrundsbild2 = Content.Load<Texture2D>("himmel2");
+        flagga= Content.Load<Texture2D>("png-clipart-supermario-flag-super-mario-bros-2-luigi-pole-angle-flag");
+        himmelpng = Content.Load<Texture2D>("himmel3");
 
         AddBricks();
         Addpipes();
@@ -123,10 +127,11 @@ public class Game1 : Game
         Rectangle bgRect6 = new(900, -750, 1000, 600);
         Rectangle bgRect7 = new(1900, -750, 1000, 600);
         Rectangle bgRect8 = new(2900, -750, 1000, 600);
-        Rectangle bgRect9 = new(3900, -1330, 1000, 600);
-        Rectangle bgRect10 = new(4900, -1330, 1000, 600);
-        Rectangle bgRect11= new(5900, -1330, 1000, 600);
-        Rectangle bgRect12= new(6900, -1330, 1000, 600);
+        Rectangle bgRect9 = new(-100, -1130, 1000, 600);
+        Rectangle bgRect10 = new(900, -1130, 1000, 600);
+        Rectangle bgRect11= new(1900, -1130, 1000, 600);
+        Rectangle bgRect12= new(2900, -1130, 1000, 600);
+        Rectangle bgRect13= new(3600, -76, 300, 700);
         GraphicsDevice.Clear(Color.CornflowerBlue);
         _spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.Transform);
         _spriteBatch.Draw(bakgrundsbild, bgRect, Color.White);
@@ -137,10 +142,11 @@ public class Game1 : Game
         _spriteBatch.Draw(bakgrundsbild2, bgRect6, Color.White);
         _spriteBatch.Draw(bakgrundsbild2, bgRect7, Color.White);
         _spriteBatch.Draw(bakgrundsbild2, bgRect8, Color.White);
-        _spriteBatch.Draw(bakgrundsbild2, bgRect9, Color.White);
-        _spriteBatch.Draw(bakgrundsbild2, bgRect10, Color.White);
-        _spriteBatch.Draw(bakgrundsbild2, bgRect11, Color.White);
-        _spriteBatch.Draw(bakgrundsbild2, bgRect12, Color.White);
+        _spriteBatch.Draw(himmelpng, bgRect9, Color.White);
+        _spriteBatch.Draw(himmelpng, bgRect10, Color.White);
+        _spriteBatch.Draw(himmelpng, bgRect11, Color.White);
+        _spriteBatch.Draw(himmelpng, bgRect12, Color.White);
+        _spriteBatch.Draw(flagga, bgRect13, Color.White);
         player.Draw(_spriteBatch, invincible);
         platform.Draw(_spriteBatch);
         foreach (enemy enemy in enemies)
@@ -194,7 +200,8 @@ public class Game1 : Game
         boxar.Add(new Brick(brick, new Vector2(2065, -100), new Vector2(50, 50)));
         boxar.Add(new Brick(brick, new Vector2(2665, -91), new Vector2(50, 50)));/*fjärde section*/
         boxar.Add(new Brick(brick, new Vector2(2930, -160), new Vector2(50, 50)));
-         boxar.Add(new Brick(brick, new Vector2(3180, -230), new Vector2(50, 50)));
+        boxar.Add(new Brick(brick, new Vector2(3180, -230), new Vector2(50, 50)));
+         boxar.Add(new Brick(brick, new Vector2(3400, -0), new Vector2(50, 50)));/*fakeblock*/
     }
     private void Addpipes()
     {
@@ -205,7 +212,7 @@ public class Game1 : Game
         pipes.Add(new greenpipe(greenpipe, new Vector2(2450, -500), new Vector2(75, 475)));
         pipes.Add(new greenpipe(greenpipe, new Vector2(2550, 190), new Vector2(75, 160)));
          pipes.Add(new greenpipe(greenpipe, new Vector2(3400, 76), new Vector2(75, 275)));
-        pipes.Add(new greenpipe(greenpipe, new Vector2(3350, -400), new Vector2(75, 375)));
+        pipes.Add(new greenpipe(greenpipe, new Vector2(3400, -390), new Vector2(75, 375)));
 
     }
     private void spawnenemy()

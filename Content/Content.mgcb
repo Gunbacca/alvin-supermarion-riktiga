@@ -37,6 +37,18 @@
 /processorParam:TextureFormat=Color
 /build:../../../../../Downloads/grass.jpg;grass.jpg
 
+#begin ../../../../../Downloads/png-clipart-supermario-flag-super-mario-bros-2-luigi-pole-angle-flag.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../../../../Downloads/png-clipart-supermario-flag-super-mario-bros-2-luigi-pole-angle-flag.png;png-clipart-supermario-flag-super-mario-bros-2-luigi-pole-angle-flag.png
+
 #begin bakgrundsbild.jpg
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -84,6 +96,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:himmel.jpg
+
+#begin himmel3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:himmel3.png
 
 #begin jumppp22.ogg
 /importer:OggImporter
