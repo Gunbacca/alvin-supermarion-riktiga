@@ -12,10 +12,15 @@ namespace TEst_med_Alvin
         private Texture2D texture;
         private Rectangle hitbox;
         private SoundEffect jumpsound;
-        public Rectangle Hitbox{
-            get{return hitbox;}
+        public Rectangle Hitbox
+        {
+            get { return hitbox; }
         }
-         public Vector2 Velocity
+        public Vector2 Position
+        {
+            get{ return position; }
+        }
+        public Vector2 Velocity
         {
             get { return velocity; }
             set { velocity = value; }
@@ -26,70 +31,84 @@ namespace TEst_med_Alvin
 
         private bool canJump = true;
 
-        public Player(Texture2D texture, Vector2 position, int pixelsize, SoundEffect jumpsound){
+        public Player(Texture2D texture, Vector2 position, int pixelsize, SoundEffect jumpsound)
+        {
             this.texture = texture;
             this.position = position;
             this.jumpsound = jumpsound;
-            hitbox = new Rectangle((int)position.X,(int)position.Y,pixelsize,pixelsize);
+            hitbox = new Rectangle((int)position.X, (int)position.Y, pixelsize, pixelsize);
         }
-        private void jump(){
-                velocity.Y = -10;
-                canJump = false;
+        private void jump()
+        {
+            velocity.Y = -10;
+            canJump = false;
 
         }
-        public void Update(){
+        public void Update()
+        {
             KeyboardState Kstate = Keyboard.GetState();
             velocity.X = 0;
 
-            if(Kstate.IsKeyDown(Keys.A)){
+            if (Kstate.IsKeyDown(Keys.A))
+            {
                 velocity.X -= 3;
             }
-            else if(Kstate.IsKeyDown(Keys.D)){
+            else if (Kstate.IsKeyDown(Keys.D))
+            {
                 velocity.X += 3;
             }
-            if(Kstate.IsKeyDown(Keys.Space)){
-                if(canJump){
+            if (Kstate.IsKeyDown(Keys.Space))
+            {
+                if (canJump)
+                {
                     jump();
                     jumpsound.Play();
                 }
             }
-            if(position.Y > 300){
+            if (position.Y > 300)
+            {
                 velocity.Y = 0;
                 position.Y = 300;
                 canJump = true;
             }
             position += velocity;
-            
-            velocity.Y += GRAVITY * 1f/60f; 
+
+            velocity.Y += GRAVITY * 1f / 60f;
             hitbox.Location = position.ToPoint();
 
         }
-        public void Draw(SpriteBatch spriteBatch, bool invincible){
-            if(!invincible)
+        public void Draw(SpriteBatch spriteBatch, bool invincible)
+        {
+            if (!invincible)
                 spriteBatch.Draw(texture, hitbox, Color.White);
             else
                 spriteBatch.Draw(texture, hitbox, Color.Black);
         }
-        public void BrickCollision(Rectangle brickHitbox){
+        public void BrickCollision(Rectangle brickHitbox)
+        {
             float lastYPos = position.Y - velocity.Y;
             position.Y = brickHitbox.Y + brickHitbox.Height;
-            if(lastYPos + hitbox.Height < brickHitbox.Y){
+            if (lastYPos + hitbox.Height < brickHitbox.Y)
+            {
                 velocity.Y = 0;
-                position.Y = brickHitbox.Y - hitbox.Height-2; 
-                canJump=true;
+                position.Y = brickHitbox.Y - hitbox.Height - 2;
+                canJump = true;
             }
         }
-        public void greenpipeCollision(Rectangle greenpipeHitbox){
+        public void greenpipeCollision(Rectangle greenpipeHitbox)
+        {
             float lastYPos = position.Y - velocity.Y;
             position.Y = greenpipeHitbox.Y + greenpipeHitbox.Height;
-            if(lastYPos + hitbox.Height < greenpipeHitbox.Y){
+            if (lastYPos + hitbox.Height < greenpipeHitbox.Y)
+            {
                 velocity.Y = 0;
-                position.Y = greenpipeHitbox.Y - hitbox.Height-2; 
-                canJump=true;
+                position.Y = greenpipeHitbox.Y - hitbox.Height - 2;
+                canJump = true;
             }
         }
 
-        public void Collision(Rectangle brickhitbox){
+        public void Collision(Rectangle brickhitbox)
+        {
             Vector2 prevPos = position;
             prevPos.X -= velocity.X;
             hitbox.Location = prevPos.ToPoint();
@@ -97,7 +116,8 @@ namespace TEst_med_Alvin
             {
                 position.X = prevPos.X;
             }
-            else{
+            else
+            {
                 position.Y -= velocity.Y;
                 if (velocity.Y > 0)
                 {

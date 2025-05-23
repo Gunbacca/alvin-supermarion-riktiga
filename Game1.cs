@@ -16,6 +16,7 @@ public class Game1 : Game
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     private Player player;
+
     private Texture2D Supermario;
     private Texture2D Grass;
     private Platform platform;
@@ -35,6 +36,7 @@ public class Game1 : Game
     private int liv = 3;
     private float _Timeleft;
     private Texture2D heart;
+    private bool win = false;
     private Texture2D fiende;
 
     Song theme;
@@ -70,7 +72,7 @@ public class Game1 : Game
         bakgrundsbild = Content.Load<Texture2D>("himmel");
         heart = Content.Load<Texture2D>("heart pixel art 254x254");
         bakgrundsbild2 = Content.Load<Texture2D>("himmel2");
-        flagga= Content.Load<Texture2D>("png-clipart-supermario-flag-super-mario-bros-2-luigi-pole-angle-flag");
+        flagga = Content.Load<Texture2D>("png-clipart-supermario-flag-super-mario-bros-2-luigi-pole-angle-flag");
         himmelpng = Content.Load<Texture2D>("himmel3");
 
         AddBricks();
@@ -86,7 +88,7 @@ public class Game1 : Game
     {
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
-
+        winningscreen();
         player.Update();
         playerbrickcollision();
         playergreenpipecollision();
@@ -119,67 +121,80 @@ public class Game1 : Game
 
     protected override void Draw(GameTime gameTime)
     {
-        Rectangle bgRect = new(-100, -170, 1000, 600);
-        Rectangle bgRect2 = new(900, -170, 1000, 600);
-        Rectangle bgRect3 = new(1900, -170, 1000, 600);
-        Rectangle bgRect4 = new(2900, -170, 1000, 600);
-        Rectangle bgRect5 = new(-100, -750, 1000, 600);
-        Rectangle bgRect6 = new(900, -750, 1000, 600);
-        Rectangle bgRect7 = new(1900, -750, 1000, 600);
-        Rectangle bgRect8 = new(2900, -750, 1000, 600);
-        Rectangle bgRect9 = new(-100, -1130, 1000, 600);
-        Rectangle bgRect10 = new(900, -1130, 1000, 600);
-        Rectangle bgRect11= new(1900, -1130, 1000, 600);
-        Rectangle bgRect12= new(2900, -1130, 1000, 600);
-        Rectangle bgRect13= new(3600, -76, 300, 700);
-        GraphicsDevice.Clear(Color.CornflowerBlue);
-        _spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.Transform);
-        _spriteBatch.Draw(bakgrundsbild, bgRect, Color.White);
-        _spriteBatch.Draw(bakgrundsbild, bgRect2, Color.White);
-        _spriteBatch.Draw(bakgrundsbild, bgRect3, Color.White);
-        _spriteBatch.Draw(bakgrundsbild, bgRect4, Color.White);
-        _spriteBatch.Draw(bakgrundsbild2, bgRect5, Color.White);
-        _spriteBatch.Draw(bakgrundsbild2, bgRect6, Color.White);
-        _spriteBatch.Draw(bakgrundsbild2, bgRect7, Color.White);
-        _spriteBatch.Draw(bakgrundsbild2, bgRect8, Color.White);
-        _spriteBatch.Draw(himmelpng, bgRect9, Color.White);
-        _spriteBatch.Draw(himmelpng, bgRect10, Color.White);
-        _spriteBatch.Draw(himmelpng, bgRect11, Color.White);
-        _spriteBatch.Draw(himmelpng, bgRect12, Color.White);
-        _spriteBatch.Draw(flagga, bgRect13, Color.White);
-        player.Draw(_spriteBatch, invincible);
-        platform.Draw(_spriteBatch);
-        foreach (enemy enemy in enemies)
-            enemy.Draw(_spriteBatch);
-        foreach (Brick b in boxar)
+
+        if (!win)
         {
-            b.Draw(_spriteBatch);
-            foreach (greenpipe g in pipes)
+            _spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.Transform);
+            Rectangle bgRect = new(-100, -170, 1000, 600);
+            Rectangle bgRect2 = new(900, -170, 1000, 600);
+            Rectangle bgRect3 = new(1900, -170, 1000, 600);
+            Rectangle bgRect4 = new(2900, -170, 1000, 600);
+            Rectangle bgRect5 = new(-100, -750, 1000, 600);
+            Rectangle bgRect6 = new(900, -750, 1000, 600);
+            Rectangle bgRect7 = new(1900, -750, 1000, 600);
+            Rectangle bgRect8 = new(2900, -750, 1000, 600);
+            Rectangle bgRect9 = new(-100, -1130, 1000, 600);
+            Rectangle bgRect10 = new(900, -1130, 1000, 600);
+            Rectangle bgRect11 = new(1900, -1130, 1000, 600);
+            Rectangle bgRect12 = new(2900, -1130, 1000, 600);
+            Rectangle bgRect13 = new(3600, -76, 300, 700);
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            _spriteBatch.Draw(bakgrundsbild, bgRect, Color.White);
+            _spriteBatch.Draw(bakgrundsbild, bgRect2, Color.White);
+            _spriteBatch.Draw(bakgrundsbild, bgRect3, Color.White);
+            _spriteBatch.Draw(bakgrundsbild, bgRect4, Color.White);
+            _spriteBatch.Draw(bakgrundsbild2, bgRect5, Color.White);
+            _spriteBatch.Draw(bakgrundsbild2, bgRect6, Color.White);
+            _spriteBatch.Draw(bakgrundsbild2, bgRect7, Color.White);
+            _spriteBatch.Draw(bakgrundsbild2, bgRect8, Color.White);
+            _spriteBatch.Draw(himmelpng, bgRect9, Color.White);
+            _spriteBatch.Draw(himmelpng, bgRect10, Color.White);
+            _spriteBatch.Draw(himmelpng, bgRect11, Color.White);
+            _spriteBatch.Draw(himmelpng, bgRect12, Color.White);
+            _spriteBatch.Draw(flagga, bgRect13, Color.White);
+            player.Draw(_spriteBatch, invincible);
+            platform.Draw(_spriteBatch);
+            foreach (enemy enemy in enemies)
+                enemy.Draw(_spriteBatch);
+            foreach (Brick b in boxar)
             {
-                g.Draw(_spriteBatch);
+                b.Draw(_spriteBatch);
+                foreach (greenpipe g in pipes)
+                {
+                    g.Draw(_spriteBatch);
+                }
             }
-        }
 
 
-        _spriteBatch.End();
 
-        _spriteBatch.Begin();
-        if (liv == 3)
-        {
-            _spriteBatch.Draw(heart, new Rectangle(64, 0, 30, 30), Color.White);
-            _spriteBatch.Draw(heart, new Rectangle(32, 0, 30, 30), Color.White);
-            _spriteBatch.Draw(heart, new Rectangle(0, 0, 30, 30), Color.White);
+            _spriteBatch.End();
+
+            _spriteBatch.Begin();
+            if (liv == 3)
+            {
+                _spriteBatch.Draw(heart, new Rectangle(64, 0, 30, 30), Color.White);
+                _spriteBatch.Draw(heart, new Rectangle(32, 0, 30, 30), Color.White);
+                _spriteBatch.Draw(heart, new Rectangle(0, 0, 30, 30), Color.White);
+            }
+            if (liv == 2)
+            {
+                _spriteBatch.Draw(heart, new Rectangle(32, 0, 30, 30), Color.White);
+                _spriteBatch.Draw(heart, new Rectangle(0, 0, 30, 30), Color.White);
+            }
+            if (liv == 1)
+            {
+                _spriteBatch.Draw(heart, new Rectangle(0, 0, 30, 30), Color.White);
+            }
+            _spriteBatch.End();
+
         }
-        if (liv == 2)
+        else
         {
-            _spriteBatch.Draw(heart, new Rectangle(32, 0, 30, 30), Color.White);
-            _spriteBatch.Draw(heart, new Rectangle(0, 0, 30, 30), Color.White);
+            _spriteBatch.Begin();
+            _spriteBatch.DrawString(Font, new Vector2, color.White);
+            _spriteBatch.End();
         }
-        if (liv == 1)
-        {
-            _spriteBatch.Draw(heart, new Rectangle(0, 0, 30, 30), Color.White);
-        }
-        _spriteBatch.End();
         base.Draw(gameTime);
 
     }
@@ -201,7 +216,7 @@ public class Game1 : Game
         boxar.Add(new Brick(brick, new Vector2(2665, -91), new Vector2(50, 50)));/*fjärde section*/
         boxar.Add(new Brick(brick, new Vector2(2930, -160), new Vector2(50, 50)));
         boxar.Add(new Brick(brick, new Vector2(3180, -230), new Vector2(50, 50)));
-         boxar.Add(new Brick(brick, new Vector2(3400, -0), new Vector2(50, 50)));/*fakeblock*/
+        boxar.Add(new Brick(brick, new Vector2(3400, -0), new Vector2(50, 50), false));/*fakeblock*/
     }
     private void Addpipes()
     {
@@ -211,7 +226,7 @@ public class Game1 : Game
         pipes.Add(new greenpipe(greenpipe, new Vector2(2450, 76), new Vector2(75, 275)));
         pipes.Add(new greenpipe(greenpipe, new Vector2(2450, -500), new Vector2(75, 475)));
         pipes.Add(new greenpipe(greenpipe, new Vector2(2550, 190), new Vector2(75, 160)));
-         pipes.Add(new greenpipe(greenpipe, new Vector2(3400, 76), new Vector2(75, 275)));
+        pipes.Add(new greenpipe(greenpipe, new Vector2(3400, 76), new Vector2(75, 275)));
         pipes.Add(new greenpipe(greenpipe, new Vector2(3400, -390), new Vector2(75, 375)));
 
     }
@@ -267,7 +282,7 @@ public class Game1 : Game
 
                 }
                 else
-                {                  
+                {
                     liv--;
                     invincible = true;
                     _Timeleft = 3;
@@ -283,5 +298,11 @@ public class Game1 : Game
     }
 
 
+    public void winningscreen() {
+        if (player.Position.X >= 3400)
+        {
+            win = true;
+        }
+    }
 
 }
